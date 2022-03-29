@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="http://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <link href="/public/main.css" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/app.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".add-form__select").change(function(){
+                $(this).find("option:selected").each(function(){
+                    var optionValue = $(this).attr("value");
+                    if(optionValue){
+                        $(".add-form__types div").hide().find('input').prop('disabled',true);
+                        $("." + optionValue).show().find('input').prop('disabled',false);
+                        $("." + optionValue).find('input')//.prop('required',true);
+                        $("." + optionValue).find('div').show();
+                    }
+                });
+            }).change();
+        });
+    </script>
+</body>
+</html>
