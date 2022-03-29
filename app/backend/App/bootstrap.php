@@ -6,7 +6,6 @@ use App\Classes\Furniture\FurnitureRepositoryMysql;
 use App\Config;
 use App\ProductServiceFactory;
 use Core\TwigTemplateEngine;
-use App\Classes\B;
 
 /**
  * Composer
@@ -43,9 +42,24 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 /**
  * Service setup
  */
-$bookRepository = new BookRepositoryMysql($pdo);
-$dvdRepository = new DvdRepositoryMysql($pdo);
-$furnitureRepository = new FurnitureRepositoryMysql($pdo);
+// $bookRepository = new BookRepositoryMysql($pdo);
+// $dvdRepository = new DvdRepositoryMysql($pdo);
+// $furnitureRepository = new FurnitureRepositoryMysql($pdo);
+$container = new DI\Container();
+$builder = new DI\ContainerBuilder();
+
+$builder->addDefinitions([
+    PDO::class => function () use ($pdo) {
+        return $pdo;
+    },
+]);
+
+$container = $builder->build();
+
+$bookRepository = $container->get(BookRepositoryMysql::class);
+var_dump($bookRepository->getAllBooks());
+
+die();
 
 $serviceFactory = new ProductServiceFactory($bookRepository, $dvdRepository, $furnitureRepository);
 
