@@ -1,0 +1,13 @@
+{
+    "require": {
+        "twig/twig": "~1.0",
+        "ext-pdo": "*",
+        "php-di/php-di": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+             "Core\\": "Core/",
+             "App\\": "App/"
+        }
+    }
+}

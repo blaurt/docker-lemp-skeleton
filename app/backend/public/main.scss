@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+$colors: (
+        background: #E8EBF7,
+        secondary: #D2D8EE,
+        accent: #FFBA08,
+        active: #E0A100,
+        text: #1B1820,
+        secondaryText: #58534B,
+        outline: #ACACAC,
+        button-press: #FFBF1F,
+        error: #EA1F3A,
+        error-background: #F58F9D
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name)
+}
+
+.page {
+  width: 80%;
+  margin: auto;
+  font-family: 'Nunito', sans-serif;
+}
+
+.nav {
+  background-color: color(background);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 3px 10px 22px 0 rgba(34, 60, 80, 0.2);
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+  }
+
+  &__link {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: color(text);
+    background-color: color(accent);
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+
+  }
+
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  background-color: color(background);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 3px 10px 22px 0 rgba(34, 60, 80, 0.2);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  background-color: color(secondary);
+
+  &__title {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__price {
+    width: 100%;
+    font-weight: bold;
+    text-align: left;
+    background-color: color(accent);
+    padding: 8px;
+    font-size: 2rem;
+    border-radius: 0 0 0.6rem 0.6rem;
+  }
+
+  &__checkbox {
+    transform: scale(1.5);
+  }
+}
+
+.add-form {
+  min-width: 420px;
+  font-family: 'Nunito', sans-serif;
+  background-color: color(secondary);
+  margin: 2.5rem auto;
+  width: 30%;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 3px 10px 22px 0 rgba(34, 60, 80, 0.2);
+
+  &__header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 1em 0;
+  }
+
+  &__input-group {
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+  }
+
+  &__input {
+    width: 100%;
+    background-color: color(background);
+    padding: .5em;
+    border-radius: .2em;
+    border: 1px solid color(outline);
+    color: color(text);
+    font-size: 1.2em;
+
+    &:focus {
+      outline: 3px solid color(outline);
+    }
+
+    &--error {
+      outline: 3px solid color(error-background);
+    }
+  }
+
+  &__flash-message {
+    display: none;
+    width: fit-content;
+    color: color(error);
+    border-radius: 0 0 .2em .2em;
+    padding: .3em;
+    margin: -1px;
+  }
+
+  &__description {
+    color: color(secondaryText);
+    margin-top: -.1em;
+    padding: .3em;
+  }
+
+  &__select {
+    width: 100%;
+    background-color: color(background);
+    padding: .5em;
+    border-radius: .2em;
+    border: 1px solid color(outline);
+    color: color(text);
+    font-size: 1.2em;
+  }
+
+  &__button-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  &__button {
+    width: 100%;
+    text-align: center;
+    color: color(text);
+    font-weight: bold;
+    background-color: color(accent);
+    display: block;
+    padding: .5em;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: .3em;
+  }
+
+  &__button:hover {
+    background-color: color(button-press);
+    border-color: color(button-press);
+  }
+
+  &__button:active {
+    background-color: color(active);
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+
+  .add-form {
+    width: 95%;
+    height: auto;
+  }
+
+  .page {
+    width: 95%;
+    margin: auto;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: color(background);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 3px 10px 22px 0 rgba(34, 60, 80, 0.2);
+    margin: 2rem auto;
+    gap: 24px;
+
+    &__link {
+      font-size: 3.2em;
+      color: color(text);
+      background-color: color(accent);
+      text-decoration: none;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+
+    &__title {
+      font-size: 5rem;
+    }
+  }
+
+  .products-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    padding: 1rem;
+    border-radius: 0.6rem;
+    background-color: color(secondary);
+    font-size: 1.5rem;
+
+    &__price {
+      font-size: 3rem;
+    }
+
+    &__checkbox {
+      transform: scale(3);
+      margin: 1rem 1rem;
+    }
+
+  }
+
+  .add-form {
+    font-size: 2rem;
+
+    &__select {
+      padding: 1rem;
+    }
+  }
+}
+

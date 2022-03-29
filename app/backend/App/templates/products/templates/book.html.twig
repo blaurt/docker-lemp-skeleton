@@ -1,0 +1,7 @@
+<div class="card">
+    <div class="card__title">{{ k.getName() }}<input class="card__checkbox" name="{{ k.getType() }}[]" type="checkbox" value='{{ k.id }}'></div>
+    <div class="card__description"> {{ k.getSku() }}</div>
+    <div class="card__created">Created at: {{ k.created_at }}</div>
+    <div class="card__attributes">Weight: {{ k.getWeight() }} KG</div>
+    <span class="card__price">{{ k.getPrice() }} $</span>
+</div>
