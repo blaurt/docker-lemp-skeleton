@@ -7,17 +7,10 @@ use PDO;
 
 class BookRepositoryMysql implements BookRepository
 {
-    /**
-     * @var PDO
-     */
+    
     public PDO $pdo;
 
-    /**
-     * Annotation combined with phpdoc:
-     *
-     * @Inject
-     * @param PDO $param1
-     */
+  
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
