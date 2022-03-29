@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Product list{% endblock %}
+
+{% block body %}
+    <div class="page">
+        <div class="nav">
+            <div class="nav__title">Products list</div>
+            <div class="nav__menu">
+                <a href="/products/addproduct" class="nav__link">Add product</a>
+                <button class="nav__link" form="delete" type="submit">Delete selected</button>
+            </div>
+        </div>
+        <form id="delete" action="/products/delete" method="POST">
+            <ul class="products-list">
+                {% if allProducts is empty %}
+                    <p> No products added to database yet. </p>
+                {% endif %}
+
+                {% for k in allProducts %}
+                    {% if k.type == 'book' %}
+                        {% include '/products/templates/book.html.twig' %}
+                    {% elseif k.type == 'dvd' %}
+                        {% include '/products/templates/dvd.html.twig' %}
+                    {% elseif k.type == 'furniture' %}
+                        {% include '/products/templates/furniture.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </form>
+    </div>
+{% endblock %}
