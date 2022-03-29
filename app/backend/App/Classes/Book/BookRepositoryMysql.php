@@ -7,14 +7,10 @@ use PDO;
 
 class BookRepositoryMysql implements BookRepository
 {
-    /**
-     * @var PDO
-     */
+    
     public PDO $pdo;
 
-    /**
-     * @param PDO $pdo
-     */
+  
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
@@ -49,6 +45,7 @@ class BookRepositoryMysql implements BookRepository
      */
     public function getAllBooks(): array
     {
+        return ['test123'];
         try {
             $statement = $this->pdo->query('SELECT id, sku, name, price, type, weight, created_at FROM books ORDER BY created_at DESC');
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);

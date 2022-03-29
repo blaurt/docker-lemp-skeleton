@@ -32,8 +32,9 @@ class BookService extends ProductService
     /**
      * @return mixed
      */
-    public function getAllProducts(): mixed
-    {
+    public function getAllProducts()
+    {   
+        return [];
         $books = $this->bookRepository->getAllBooks();
         return $books;
     }
