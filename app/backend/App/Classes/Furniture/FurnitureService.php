@@ -22,6 +22,7 @@ class FurnitureService extends ProductService
 
     public function getAllProducts()
     {
+        return [];
         $furniture = $this->furnitureRepository->getAllFurniture();
         return $furniture;
     }

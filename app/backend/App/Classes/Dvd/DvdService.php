@@ -35,6 +35,7 @@ class DvdService extends ProductService
      */
     public function getAllProducts()
     {
+        return [];
         $dvds = $this->dvdRepository->getAllDvds();
         return $dvds;
     }
