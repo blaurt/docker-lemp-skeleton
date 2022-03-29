@@ -1,0 +1,4 @@
+databases
+app/backend/vendor
+
+.DS_Store
